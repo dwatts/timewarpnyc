@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TP:TW</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://js.arcgis.com/4.27/esri/css/main.css">
+    <script type="module" crossorigin src="/timewarpnyc/assets/index-b6b7583b.js"></script>
+    <link rel="stylesheet" href="/timewarpnyc/assets/index-abd0b88c.css">
+  </head>
+  <body>
+
+    <!--Navbar-->
+
+    <nav id="mainNavbar" class="navbar navbar-dark navbar-expand-md px-3 py-0 fixed-top">
+      <a href="#" data-text="TP:TW NYC" class="navbar-brand">TP:TW NYC</a>
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navLinks" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navLinks">
+          <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                  <a href="#" id="about" class="nav-link" data-bs-toggle="modal" data-bs-target="#aboutModal">About</a>
+              </li>
+              <li class="nav-item">
+                  <a href="#" id="eraSwitch" class="nav-link" data-bs-toggle="modal" data-bs-target="#yearSwitchModal">Time Warp</a>
+              </li>
+              <li class="nav-item">
+                  <a href="#" id="search" class="nav-link" data-bs-toggle="modal" data-bs-target="#searchModal">Search</a>
+              </li>
+          </ul>
+      </div>
+    </nav>
+
+    <!--About Modal -->
+
+    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row pb-1">
+                            <div class="col d-flex justify-content-between">
+                                <span class="infoTitle">About TP:TW NYC</span>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                        </div>
+                        <div class="row text-start">
+                            <div class="infoText"><b>Tax Photo Time Warp (TP:TW)</b> was developed to provide a new way to
+                                experience the history of Manhattan south of 14th Street through New York City tax
+                                photos representative of two eras of the city's history, the 1940s and 1980s. Click
+                                on a 3D building to see its tax photo and switch between the 40s and 80s by using
+                                the 'Time Warp' switch at the top right of the screen. Find an address by clicking
+                                on 'Search'.</div>
+                            <div class="infoText">
+                                TP:TW was developed with <a class="infoLink" href="https://vitejs.dev/" target="_blank">Vite</a>, <a class="infoLink" href="https://getbootstrap.com/" target="_blank">Bootstrap</a>, the <a class="infoLink" href="https://developers.arcgis.com/javascript/latest/" target="_blank">ArcGIS Maps SDK for Javascript 4.x</a>, the <a class="infoLink" href="https://doc.lunaimaging.com/display/V75D/LUNA+API+Documentation" target="_blank">Luna Imaging
+                                    API</a>, <a class="infoLink" href="https://animejs.com/" target="_blank">anime.js</a>, 2014 3D NYC building models provided by NYC OTI through the NYC Open Data Portal, 3D buildings built after 2014 were
+                                created by the author using <a class="infoLink" href="https://www.esri.com/en-us/arcgis/products/arcgis-cityengine/overview" target="_blank">ArcGIS CityEngine</a> and models of ships and planes
+                                created by the author using <a class="infoLink" href="https://kenney.nl/tools/asset-forge" target="_blank">Asset Forge</a>. Blimp model courtesy of Poly by Google [CC-BY] via <a class="infoLink" href="https://poly.pizza/m/eUzYtv-FRrl" target="_blank">Poly Pizza</a>.
+                            </div>
+                        </div>
+                        <div class="row text-start py-1">
+                            <span class="infoSubTitle">NYC Tax Photos</span>
+                        </div>
+                        <div class="row text-start">
+                            <div class="infoText">During the years 1939-1941 the New York City Department of
+                                Taxation and the Federal Government's Works Progress Administration teamed up to
+                                photograph every building in New York City. The purpose of the project was to
+                                streamline the task of determining real property values across the five boroughs.
+                                What resulted was a unique collection of more than 700,000 photographs that provide
+                                an invaluable record of New York City's built environment at a time just before the
+                                city was radically changed through the massive public works projects of the 1950s
+                                and 60s.
+                            </div>
+                            <div class="infoText">In the 1980s, the New York City Department of Finance, having
+                                decided that the 1939-41 tax photos were too old to be useful, again set out to
+                                produce a similar series of building level tax photographs. However, instead of
+                                using 35mm cameras the agency set out to utilize a new technology, Laser Video
+                                Disks, which were used to capture each building as a single video frame. The series
+                                of photos produced are evocative of the era yet lower in quality than the images
+                                taken some forty years prior.
+                            </div>
+                            <div class="infoText">All NYC tax photos copyright © <a class="infoLink" href="https://nycma.lunaimaging.com/luna/servlet/NYCMA~5~5" target="_blank">New York City Municipal Archives</a>.</div>
+                            <div class="infoText">Application copyright © 2023 <a class="infoLink" href="https://www.danielhwatts.com" target="_blank">Daniel H. Watts</a></div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Year Switch Modal -->
+
+    <div class="modal fade" id="yearSwitchModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row text-center">
+                            <div class="col py-2">
+                                <span class="switchTitle">Switch Decades</span>
+                            </div>
+                        </div>
+                        <div class="row text-center">
+                            <div class="col-4">
+                                <div class="row">
+                                    <span class="switchText40">1940s</span>
+                                </div>
+                                <div class="row">
+                                    <span class="switchSubText40">Tax Photos</span>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label class="switch">
+                                    <input type="checkbox" id="switch">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="col-4">
+                                <div class="row">
+                                    <span class="switchText80">1980s</span>
+                                </div>
+                                <div class="row">
+                                    <span class="switchSubText80">Tax Photos</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Search Widget Modal -->
+
+    <div class="modal fade" id="searchModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row text-center">
+                            <div class="col py-2">
+                                <div class="searchTitle">Search by Address</div>
+                                <div id="addSearch"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Popup Div-->
+
+    <div id="popupDiv">
+      <div class="card" id="cardId">
+          <div id="cardClose"><i class="fa-solid fa-xmark" id="cardX"></i></div>
+          <img src="" class="cardImage" id="cardImageId">
+          <div class="popupContainer" id="containerId">
+            <h3 id="addressText"></h3>
+            <div class="bblHolder"><h4>Manhattan Block:</h4><h4 id=blockText></h4><h4>Lot:</h4><h4 id=lotText></h4></div>
+    
+            <div id='buttonHolder'>
+                <button id='left'><i class="fa-solid fa-backward"></i></button>
+                <div id='counterHolder'>
+                    <h4>Image</h4><h4 id='counterText'>1</h4><h4>/</h4><h4 id='totalText'></h4>
+                </div>
+                <button id='right'><i class="fa-solid fa-forward"></i></button>
+            </div>
+          </div>
+        </div>
+    </div>
+    
+    <!--Loader Clock Div-->
+    
+    <div id="loaderDiv">
+        <div class="container">
+            <div class="row">
+                <div class="col d-flex justify-content-center pb-4">
+                    <div class="loaderTitleHolder">
+                        <h1 data-text="Click on buildings to see NYC tax photos" class="loaderTitle">Click on buildings to see NYC tax photos</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col d-flex justify-content-center pb-2">
+                    <span class="loaderGraphic"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <div class="loaderText">Loading</div><span class="ellipsis-anim"><span>.</span><span>.</span><span>.</span></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--Map Div-->
+
+    <div id="viewDiv"></div>
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </body>
+</html>
